@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" name="" id = "search" placeholder="type"><br>
+    <div id="showdata">
+      {% for x in doc %}
+
+        <br>
+            {{x.status}}
+<br>
+            {{x.total}}<br>
+            {{x.description}}
+  <br>
+          {%endfor%}
+    </div>
+    <script>
+      var vr = document.getElementById('showdata');
+      const data = '{{data}}';
+      const rdata = JSON.parse(data.replace(/&quot;/g,'"'));
+      const search = document.getElementById('search');
+      let arr = []
+      search.addEventListener('keyup',(e)=>{
+          showdata.innerHTML = ""
+          arr = rdata.filter(data=>data['status'].includes(e.target.value))
+          console.log(arr)
+          if(arr.length > 0){
+            arr.map(data=>{
+              showdata.innerHTML+=`<b>${data['status']}</b><br>`
+            })
+          }
+          else{
+            showdata.innerHTML+=`Not found`
+          }
+      })
+
+      console.log(rdata);
+    </script>
+  </body>
+</html>

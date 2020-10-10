@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'shop:admin_auth' %}">
+    {% csrf_token %}
+    <input name="email" placeholder="email" type="email"><br>
+    <input name="password" placeholder="password" type="password"><br>
+    <input  value="submit" type="submit"><br>
+</form>
+</body>
+</html>
